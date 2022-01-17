@@ -1,21 +1,38 @@
 import React, {Component} from "react";
-import { useState } from 'react';
 import { Link } from "react-router-dom";
-export default class Login extends Component {
+// import axios from 'axios';
+import "../Login.css";
+import logo from '../img/Frame.png'
+
+
+export default class LoginForm extends Component {
     
     handleSubmit = e => {
-        
-        const [details] = useState({email: "", password: ""});
         e.preventDefault();
-        Login(details);
+        
+        const data = {
+            email: this.email,
+            password: this.password
+        };
+        console.log(data);
+        // axios.post('login', data)
+        // .then(res => {
+        //     localStorage.setItem('token', res.token);
+        // })
+        // .catch(err => {
+        //     console.log(err)
+        // })
 
     };
 
+    
+
     render() {
         return (
-            <div className="form-inner">
-            <form onSubmit={this.handleSubmit}>
-                <h3>Đăng nhập</h3>
+            <div className="login">
+                <img class="logo" src={logo} alt="logo"/>
+            <form className="form" onSubmit={this.handleSubmit}>
+                <h1>Đăng nhập</h1>
 
                 <div className="form-group">
                     <label>Tên đăng nhập</label>
@@ -30,13 +47,14 @@ export default class Login extends Component {
                     onChange={e => this.password = e.target.value}>
                     </input>
                 </div>
-                
                 <p className="forgot-pw">
                     <Link className="forgot-pw" to={'/forgot'}>Quên mật khẩu?</Link>
                 </p>
-                <button className="btn-login">Đăng nhập</button>    
+                <Link className="homepg" to={'/home'}><button className="btn-login">Đăng nhập</button></Link>
+                
             </form>
-            </div>           
+            </div>
+
         )
     }
 }

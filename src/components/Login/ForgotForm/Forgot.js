@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
-
-export default class Forgot extends Component {
+import "../Login.css";
+export default class ForgotForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
@@ -9,8 +9,9 @@ export default class Forgot extends Component {
     
     render() {
         return (
-            <div className="form-inner">
-            <form onSubmit={this.handleSubmit}>
+            <div className="login">
+                <img class="logo" src="./Frame.png" alt="logo"/>
+            <form className="form" onSubmit={this.handleSubmit}>
                 <h3>Cấp lại mật khẩu</h3>
 
                 <div className="form-group">
@@ -26,13 +27,14 @@ export default class Forgot extends Component {
                     onChange={e => this.text = e.target.value}>
                     </input>
                 </div>
-                
                 <p className="forgot-pw">
                     <Link className="forgot-pw" to={'/login'}>Quay lại trang chủ</Link>
                 </p>
                 <button className="btn-forgot">Cấp lại mật khẩu</button>
             </form>
-            </div>    
+            </div>
+
+            
         )
     }
 }
